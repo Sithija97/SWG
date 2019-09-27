@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   operations: {
     flex: 1,
-    backgroundColor: colors['purple-dark'],
+    backgroundColor: '#4834d4',
   },
 });
 

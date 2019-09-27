@@ -7,11 +7,19 @@ import {
   Text,
   StatusBar,
   TextInput,
+  Image
 } from 'react-native';
 
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 
 export default class LocationScreen extends React.Component {
+  static navigationOptions = {
+    drawerIcon: ()=>(
+      <Image  source={require('./location.png')}
+      style={styles.image}
+      />
+    ),
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -47,4 +55,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
   },
+  image: {
+    width: 30,
+    height: 30
+  },
 });
+

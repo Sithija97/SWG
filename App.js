@@ -16,6 +16,7 @@ import SavingsScreen from './components/category/Savings';
 import PlansScreen from './components/base/Plans';
 import CalanderScreen from './components/calander/Calander';
 import CalculatorScreen from './components/calculator/Calculator';
+import CategoryScreen from "./components/category/Categories";
 
 export default class App extends React.Component {
   render() {
@@ -28,12 +29,14 @@ export default class App extends React.Component {
 const DashTabNavigator = createBottomTabNavigator({
   IncomeScreen,
   ExpenseScreen,
-  SavingsScreen
+  SavingsScreen,
+
 });
 
 const AppDrawerNavigator = createDrawerNavigator({
   Home:HomeScreen,
-  Categories: DashTabNavigator,
+  //Categories: DashTabNavigator,
+  Category:CategoryScreen,
   Calander: CalanderScreen,
   Calculator: CalculatorScreen,
   Location: LocationScreen,

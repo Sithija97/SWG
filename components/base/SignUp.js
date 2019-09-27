@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 5,
     height: 25,
-    width: 25,
+    width: 45,
     resizeMode: 'stretch',
     alignItems: 'center',
   },

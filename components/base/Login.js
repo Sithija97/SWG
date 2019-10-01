@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Text,
+  ImageBackground
 } from 'react-native';
 
 export default class LoginScreen extends React.Component {
@@ -14,47 +15,51 @@ export default class LoginScreen extends React.Component {
   };
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.SectionStyle}>
-          <Image
-            //We are showing the Image from online
-            source={require('./mail.png')}
-            //You can also show the image from you project directory like below
-            //source={require('./Images/user.png')}
+      <ImageBackground
+        source={require('./Hometest.jpg')}
+        style={styles.container}>
+        <View>
+          <View style={styles.SectionStyle}>
+            <Image
+              //We are showing the Image from online
+              source={require('./mail.png')}
+              //You can also show the image from you project directory like below
+              //source={require('./Images/user.png')}
 
-            //Image Style
-            style={styles.ImageStyle}
-          />
+              //Image Style
+              style={styles.ImageStyle}
+            />
 
-          <TextInput
-            style={{flex: 1}}
-            placeholder="Enter Your Email Here"
-            underlineColorAndroid="transparent"
-          />
+            <TextInput
+              style={{flex: 1}}
+              placeholder="Enter Your Email Here"
+              underlineColorAndroid="transparent"
+            />
+          </View>
+          <View style={styles.SectionStyle}>
+            <Image
+              //We are showing the Image from online
+              source={require('./psswrd.png')}
+              //You can also show the image from you project directory like below
+              //source={require('./Images/phone.png')}
+
+              //Image Style
+              style={styles.ImageStyle}
+            />
+
+            <TextInput
+              style={{flex: 1}}
+              placeholder="Enter Your Password here"
+              underlineColorAndroid="transparent"
+            />
+          </View>
+          <TouchableOpacity
+            style={styles.buttonContainer}
+            onPress={() => this.props.navigation.navigate('Plans')}>
+            <Text style={styles.ButtonText}>Login</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.SectionStyle}>
-          <Image
-            //We are showing the Image from online
-            source={require('./psswrd.png')}
-            //You can also show the image from you project directory like below
-            //source={require('./Images/phone.png')}
-
-            //Image Style
-            style={styles.ImageStyle}
-          />
-
-          <TextInput
-            style={{flex: 1}}
-            placeholder="Enter Your Password here"
-            underlineColorAndroid="transparent"
-          />
-        </View>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => this.props.navigation.navigate('Home')}>
-          <Text style={styles.ButtonText}>Login</Text>
-        </TouchableOpacity>
-      </View>
+      </ImageBackground>
     );
   }
 }
@@ -64,8 +69,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
-    padding: 40,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
 
   SectionStyle: {
@@ -92,6 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#dfe4ea',
     padding: 10,
+    margin: 10,
     marginBottom: 20,
     borderRadius: 8,
     width: 300,

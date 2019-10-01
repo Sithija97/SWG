@@ -38,7 +38,7 @@ export default class WelcomeScreen extends React.Component {
       <View style={styles.SplashScreen_RootView}>
         <View style={styles.SplashScreen_ChildView}>
           <Image
-            source={require('./Home.jpg')}
+            source={require('./Splash.jpg')}
             style={{width: '100%', height: '100%', resizeMode: 'cover'}}
           />
         </View>
@@ -47,21 +47,21 @@ export default class WelcomeScreen extends React.Component {
     return (
       <View style={styles.MainContainer}>
         <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require('./icon2.png')} />
+          <Image style={styles.logo} source={require('./icon2.0.png')} />
 
           <Text style={styles.logoTitle}>"because money matters"</Text>
         </View>
 
         <TouchableOpacity
-          style={styles.buttonContainer}
+          style={styles.buttonContainerSignUp}
           onPress={() => this.props.navigation.navigate('SignUp')}>
-          <Text style={styles.ButtonText}>SignUp</Text>
+          <Text style={styles.ButtonTextSignUp}>New to Smart Wallet Guide</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.buttonContainer}
+          style={styles.buttonContainerLogin}
           onPress={() => this.props.navigation.navigate('Login')}>
-          <Text style={styles.ButtonText}>Login</Text>
+          <Text style={styles.ButtonTextLogin}>Already using Smart Wallet Guide</Text>
         </TouchableOpacity>
 
         {this.state.isVisible === true ? Splash_Screen : null}
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: Platform.OS === 'ios' ? 20 : 0,
-    backgroundColor: '#f5f6fa',
+    backgroundColor: '#f1f2f6',//#f1f2f6
   },
 
   SplashScreen_RootView: {
@@ -112,15 +112,27 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontStyle: 'italic',
   },
-  buttonContainer: {
+  buttonContainerSignUp: {
     alignItems: 'center',
-    backgroundColor: '#dfe4ea',
+    backgroundColor: '#283de8',
     padding: 10,
     marginBottom: 20,
     borderRadius: 8,
     width:350
   },
-  ButtonText: {
+  buttonContainerLogin:{
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    padding: 10,
+    marginBottom: 20,
+    borderRadius: 8,
+    width:350
+  },
+  ButtonTextSignUp: {
+    fontWeight: 'bold',
+    color:'#f1f2f6'
+  },
+  ButtonTextLogin: {
     fontWeight: 'bold',
     //color:'#4834d4'
   },

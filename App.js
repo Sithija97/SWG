@@ -17,6 +17,7 @@ import PlansScreen from './components/base/Plans';
 import CalanderScreen from './components/calander/Calander';
 import CalculatorScreen from './components/calculator/Calculator';
 import CategoryScreen from "./components/category/Categories";
+import UserInfoScreen from "./components/base/UserInfo";
 
 export default class App extends React.Component {
   render() {
@@ -56,6 +57,7 @@ const AppStackNavigator = createStackNavigator({
     Welcome:{screen: WelcomeScreen},
     SignUp:{screen: SignUpScreen},
     Login:{screen: LoginScreen},
+    UserInfo:{screen:UserInfoScreen},
     Plans:{screen:PlansScreen},
     Home:{screen:AppDrawerNavigator},
 },

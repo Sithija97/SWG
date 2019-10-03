@@ -123,7 +123,7 @@ export default class CategoryScreen extends React.Component {
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="laptop" />
+              <Icon active name="school" />
               <Text>Education</Text>
             </CardItem>
           </Card>
@@ -195,37 +195,37 @@ export default class CategoryScreen extends React.Component {
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="heart-dislike" />
               <Text>Funeral</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="heart-half" />
               <Text>Marriage</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="medkit" />
               <Text>Health and Fitness</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="person" />
               <Text>Personal Care</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="football" />
               <Text>Sports</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="list-box" />
               <Text>Insuarances</Text>
             </CardItem>
           </Card>

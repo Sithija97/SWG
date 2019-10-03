@@ -66,7 +66,7 @@ export default class CategoryScreen extends React.Component {
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="redo" />
+              <Icon active name="share-alt" />
               <Text>Other</Text>
             </CardItem>
           </Card>
@@ -177,19 +177,19 @@ export default class CategoryScreen extends React.Component {
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="heart" />
               <Text>Friends and Lover</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="gift" />
               <Text>Gifts and Donations</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="person-add" />
               <Text>Charity</Text>
             </CardItem>
           </Card>
@@ -285,25 +285,25 @@ export default class CategoryScreen extends React.Component {
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="car" />
               <Text>Taxi</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="airplane" />
               <Text>Travel</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="wallet" />
               <Text>Withdrawal</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="share-alt" />
               <Text>Others</Text>
             </CardItem>
           </Card>

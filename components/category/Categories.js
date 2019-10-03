@@ -1,5 +1,6 @@
-import React from 'react';
-import {StyleSheet, View, TextInput, Image, Text} from 'react-native';
+import React, { Component } from 'react';
+import {StyleSheet, Image} from 'react-native'
+import { Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
 
 export default class CategoryScreen extends React.Component {
   static navigationOptions = {
@@ -11,9 +12,22 @@ export default class CategoryScreen extends React.Component {
   }
   render() {
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{fontWeight:'bold'}}>Categories</Text>
-      </View>
+      <Container>
+        <Content>
+          <Card>
+            <CardItem>
+              <Icon active name="card" />
+              <Text>Income</Text>
+             </CardItem>
+           </Card>
+           <Card>
+            <CardItem>
+              <Icon active name="card" />
+              <Text>Income</Text>
+             </CardItem>
+           </Card>
+        </Content>
+      </Container>
     );
   }
 }

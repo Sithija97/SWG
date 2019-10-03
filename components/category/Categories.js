@@ -267,19 +267,19 @@ export default class CategoryScreen extends React.Component {
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="hammer" />
               <Text>Maintenance</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="close-circle" />
               <Text>Parking Fees</Text>
             </CardItem>
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="flame" />
               <Text>Petrol</Text>
             </CardItem>
           </Card>

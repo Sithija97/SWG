@@ -261,7 +261,7 @@ export default class CategoryScreen extends React.Component {
           </Card>
           <Card>
             <CardItem>
-              <Icon active name="card" />
+              <Icon active name="train" />
               <Text>Transportation</Text>
             </CardItem>
           </Card>

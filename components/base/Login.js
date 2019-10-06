@@ -6,8 +6,9 @@ import {
   Image,
   TouchableOpacity,
   Text,
-  ImageBackground
+  ImageBackground,
 } from 'react-native';
+import {SocialIcon} from 'react-native-elements';
 
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
@@ -58,6 +59,20 @@ export default class LoginScreen extends React.Component {
             onPress={() => this.props.navigation.navigate('Home')}>
             <Text style={styles.ButtonText}>Login</Text>
           </TouchableOpacity>
+          <SocialIcon
+            title="Sign In With Facebook"
+            button
+            type="facebook"
+            style={styles.buttonContainerSocial}
+            onPress={() => this.props.navigation.navigate('')}
+          />
+          <SocialIcon
+            title="Sign In With Google"
+            button
+            type="google"
+            style={styles.buttonContainerSocial}
+            onPress={() => this.props.navigation.navigate('')}
+          />
         </View>
       </ImageBackground>
     );
@@ -106,5 +121,14 @@ const styles = StyleSheet.create({
   ButtonText: {
     fontWeight: 'bold',
     //color:'#4834d4'
+  },
+  buttonContainerSocial: {
+    alignItems: 'center',
+    padding: 10,
+    margin: 10,
+    marginBottom: 20,
+    borderRadius: 8,
+    width: 300,
+    height:40
   },
 });

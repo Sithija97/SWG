@@ -4,6 +4,7 @@ import {
   View,
   Text,
   Image,
+  ScrollView,
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
@@ -14,12 +15,21 @@ export default class UserInfoScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+  constructor() {
+    super();
+    this.state = {
+      status: '',
+      student_type: '',
+      employee_type: '',
+      income_level: '',
+    };
+  }
   render() {
     return (
       <ImageBackground
         source={require('./UserInfo.jpg')}
         style={styles.imagecontainer}>
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <Text
             style={{
               fontWeight: 'bold',
@@ -29,7 +39,7 @@ export default class UserInfoScreen extends React.Component {
               fontSize: 30,
               alignContent: 'center',
             }}>
-            Tell us a bit about Yourselft
+            Tell us a bit about Yourself
           </Text>
           <Text style={{fontWeight: 'bold', color: '#3742fa', marginTop: 10}}>
             Mandatory
@@ -38,7 +48,7 @@ export default class UserInfoScreen extends React.Component {
           <View style={{padding: 20}}>
             <Text>select your status</Text>
             <RNPickerSelect
-              onValueChange={value => console.log(value)}
+              onValueChange={value => this.setState({status: value})}
               items={[
                 {label: 'Student', value: 'student '},
                 {label: 'Employee', value: 'employee'},
@@ -50,7 +60,7 @@ export default class UserInfoScreen extends React.Component {
           <View style={{padding: 20}}>
             <Text>If Student, you're a..</Text>
             <RNPickerSelect
-              onValueChange={value => console.log(value)}
+              onValueChange={value => this.setState({student_status: value})}
               items={[
                 {label: 'School Student', value: 'school student '},
                 {
@@ -68,7 +78,7 @@ export default class UserInfoScreen extends React.Component {
           <View style={{padding: 20}}>
             <Text>If Employee, you're from..</Text>
             <RNPickerSelect
-              onValueChange={value => console.log(value)}
+              onValueChange={value => this.setState({employee_type: value})}
               items={[
                 {label: 'Private Sector', value: 'private sector'},
                 {label: 'Government Sector', value: 'government sector'},
@@ -81,7 +91,7 @@ export default class UserInfoScreen extends React.Component {
           <View style={{padding: 20}}>
             <Text>Your income level is..</Text>
             <RNPickerSelect
-              onValueChange={value => console.log(value)}
+              onValueChange={value => this.setState({income_level: value})}
               items={[
                 {label: 'High-level', value: 'high-level'},
                 {label: 'Mid-level', value: 'mid-level'},
@@ -92,10 +102,17 @@ export default class UserInfoScreen extends React.Component {
 
           <TouchableOpacity
             style={styles.buttonContainer}
-            onPress={() => this.props.navigation.navigate('Plans')}>
+            onPress={() =>
+              this.props.navigation.navigate('Plans', {
+                status: this.state.status,
+                student_status: this.state.student_status,
+                employee_type: this.state.employee_type,
+                income_level: this.state.income_level,
+              })
+            }>
             <Text style={styles.ButtonText}>Next</Text>
           </TouchableOpacity>
-        </View>
+        </ScrollView>
       </ImageBackground>
     );
   }

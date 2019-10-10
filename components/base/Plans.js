@@ -9,6 +9,12 @@ export default class PlansScreen extends React.Component {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text style={{fontWeight: 'bold', marginTop: 20}}>Plans</Text>
+
+        <Text>{this.props.navigation.getParam('status')}</Text>
+        <Text>{this.props.navigation.getParam('student_status')}</Text>
+        <Text>{this.props.navigation.getParam('employee_type')}</Text>
+        <Text>{this.props.navigation.getParam('income_level')}</Text>
+        
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={() => this.props.navigation.navigate('Home')}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text,Image, StyleSheet } from 'react-native';
+import { Button, View, Text,Image, StyleSheet, TouchableOpacity } from 'react-native';
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     drawerIcon: ()=>(

@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     marginLeft: 260,
-    borderRadius: 14,
+    borderRadius: 20,
   },
   ButtonText: {
     fontWeight: 'bold',

@@ -11,37 +11,63 @@ import {
   TextInput,
 } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
+// import axios from 'axios';
 
 export default class ConverterScreen extends React.Component {
+  convert(){
+   var x = this.curinput;
+  //  this.setState({result:x})
+  //  var result = x * state.Currency;
+  //  this.setState({result:value});
+  var temp = this.state.Currency;
+  this.setState({result: temp});
+
+
+  }
+  
   static navigationOptions = {
     drawerIcon: () => (
       <Image source={require('./git-compare.png')} style={styles.image} />
     ),
   };
+  constructor() {
+    super();
+    this.state = {
+      Currency: '',
+      result : ''
+     
+    };
+  }
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <View style={styles.SectionStyle}>
-          <TextInput
+          <TextInput id="curinput"
             //style={{flex: 1}}
             placeholder="Enter Currency"
             underlineColorAndroid="transparent"
           />
         </View>
 
+        
         <RNPickerSelect
-          onValueChange={value => this.setState({status: value})}
+          onValueChange={value => this.setState({Currency: value})}
           items={[
-            {label: 'US Dollar', value: 'US '},
-            {label: 'LKR', value: 'LKR'},
-            {label: 'Ind Rupee', value: 'Ind Rupee'},
+            {label: 'US Dollar', value: '0.45'},
+            {label: 'LKR', value: '0.55'},
+            {label: 'Ind Rupee', value: '0.65'},
           ]}
         />
+
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => this.props.navigation.navigate('')}>
+          onPress={() => this.convert()}>
           <Text style={styles.ButtonText}>Convert</Text>
         </TouchableOpacity>
+
+        <View style={{backgroundColor:'#f1f2f6'}}>
+          <Text>{this.state.result}</Text>
+        </View>
       </View>
     );
   }

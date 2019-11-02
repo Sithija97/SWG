@@ -61,6 +61,9 @@ const AppStackNavigator = createStackNavigator({
     UserInfo:{screen:UserInfoScreen},
     Plans:{screen:PlansScreen},
     Home:{screen:AppDrawerNavigator},
+    Income:{screen:IncomeScreen},
+    Expense:{screen:ExpenseScreen},
+    Savings:{screen:SavingsScreen},
 },
 {
   defaultNavigationOptions: ({ navigation }) => {

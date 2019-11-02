@@ -8,16 +8,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    drawerIcon: () => (
-      <Image source={require('./HomeIcon.png')} style={styles.image} />
-    ),
-  };
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#f3f3f3'}}>
@@ -26,19 +20,19 @@ export default class HomeScreen extends React.Component {
           <ActionButton.Item
             buttonColor="#9b59b6"
             title="Income"
-            onPress={() => console.log('notes tapped!')}>
+            onPress={() => this.props.navigation.navigate('Income')}>
             <Icon style={styles.actionButtonIcon} />
           </ActionButton.Item>
           <ActionButton.Item
             buttonColor="#3498db"
             title="Expenses"
-            onPress={() => {}}>
-            <Icon style={styles.actionButtonIcon} />
+            onPress={() => this.props.navigation.navigate('Expense')}>
+            <Icon style={styles.actionButtonIcon}/>
           </ActionButton.Item>
           <ActionButton.Item
             buttonColor="#1abc9c"
             title="Savings"
-            onPress={() => {}}>
+            onPress={() => this.props.navigation.navigate('Savings')}>
             <Icon style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
@@ -51,5 +45,10 @@ const styles = StyleSheet.create({
   image: {
     width: 30,
     height: 30,
+  },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
   },
 });

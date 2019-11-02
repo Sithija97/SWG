@@ -8,7 +8,7 @@ import {
   Text,
   ImageBackground,
 } from 'react-native';
-import {SocialIcon} from 'react-native-elements';
+//import {SocialIcon} from 'react-native-elements';
 export default class SignUpScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -75,20 +75,7 @@ export default class SignUpScreen extends React.Component {
             onPress={() => this.props.navigation.navigate('UserInfo')}>
             <Text style={styles.ButtonText}>SignUp</Text>
           </TouchableOpacity>
-          <SocialIcon
-            title="Sign In With Facebook"
-            button
-            type="facebook"
-            style={styles.buttonContainerSocial}
-            onPress={() => this.props.navigation.navigate('')}
-          />
-          <SocialIcon
-            title="Sign In With Google"
-            button
-            type="google"
-            style={styles.buttonContainerSocial}
-            onPress={() => this.props.navigation.navigate('')}
-          />
+          
         </View>
       </ImageBackground>
     );
@@ -148,3 +135,19 @@ const styles = StyleSheet.create({
     height:40
   },
 });
+/*
+<SocialIcon
+            title="Sign In With Facebook"
+            button
+            type="facebook"
+            style={styles.buttonContainerSocial}
+            onPress={() => this.props.navigation.navigate('')}
+          />
+          <SocialIcon
+            title="Sign In With Google"
+            button
+            type="google"
+            style={styles.buttonContainerSocial}
+            onPress={() => this.props.navigation.navigate('')}
+          />
+*/

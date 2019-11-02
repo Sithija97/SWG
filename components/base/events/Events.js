@@ -5,14 +5,14 @@ import {
   Text,
   Image,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
+  TextInput
 } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default class SavingsScreen extends React.Component {
+export default class EventsScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -20,7 +20,7 @@ export default class SavingsScreen extends React.Component {
     return (
       <View style={{flex: 1}}>
         <Text style={{paddingTop: 20, fontWeight: 'bold', paddingLeft: 20}}>
-          Savings
+          Special Events
         </Text>
         <View style={styles.SectionStyle}>
           
@@ -31,7 +31,7 @@ export default class SavingsScreen extends React.Component {
             keyboardType = "number-pad"
           />
         </View>
-        <ActionButton buttonColor="#1abc9c">
+        <ActionButton buttonColor="#9b59b6">
           <Icon name="md-done-all" style={styles.actionButtonIcon} />
         </ActionButton>
       </View>

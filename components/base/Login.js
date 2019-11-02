@@ -60,20 +60,6 @@ export default class LoginScreen extends React.Component {
             <Text style={styles.ButtonText}>Login</Text>
           </TouchableOpacity>
 
-          <SocialIcon
-            title="Sign In With Facebook"
-            button
-            type="facebook"
-            style={styles.buttonContainerSocial}
-            onPress={() => this.props.navigation.navigate('')}
-          />
-          <SocialIcon
-            title="Sign In With Google"
-            button
-            type="google"
-            style={styles.buttonContainerSocial}
-            onPress={() => this.props.navigation.navigate('')}
-          />
         </View>
       </ImageBackground>
     );
@@ -134,3 +120,20 @@ const styles = StyleSheet.create({
   },
 
 });
+
+/*
+<SocialIcon
+            title="Sign In With Facebook"
+            button
+            type="facebook"
+            style={styles.buttonContainerSocial}
+            onPress={() => this.props.navigation.navigate('')}
+          />
+          <SocialIcon
+            title="Sign In With Google"
+            button
+            type="google"
+            style={styles.buttonContainerSocial}
+            onPress={() => this.props.navigation.navigate('')}
+          />
+*/

@@ -18,7 +18,7 @@ import CalanderScreen from './components/calander/Calander';
 import CalculatorScreen from './components/calculator/Calculator';
 import CategoryScreen from "./components/category/Categories";
 import UserInfoScreen from "./components/base/UserInfo";
-
+import ConverterScreen from './components/converter/Converter';
 export default class App extends React.Component {
   render() {
     return (
@@ -40,6 +40,7 @@ const AppDrawerNavigator = createDrawerNavigator({
   Category:CategoryScreen,
   Calander: CalanderScreen,
   Calculator: CalculatorScreen,
+  Converter:ConverterScreen,
   Location: LocationScreen,
 
 },

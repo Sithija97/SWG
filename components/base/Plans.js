@@ -5,6 +5,32 @@ export default class PlansScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+  //This function returns appropriate URL based on passed status
+  renderImageBasedOnStatus = () => {
+    switch (this.props.navigation.getParam('status')) {
+      case 'student':
+        return (
+          <Image
+            style={{width: 50, height: 50}}
+            //source={require('./icon2.png')}
+          />
+        );
+      case 'employee':
+        return (
+          <Image
+            style={{width: 50, height: 50}}
+            //source={require('./psswrd.jpg')}
+          />
+        );
+      case 'senior_citizen':
+        return (
+          <Image
+            style={{width: 50, height: 50}}
+            //source={require('./Home.jpg')}
+          />
+        );
+    }
+  };
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -14,7 +40,10 @@ export default class PlansScreen extends React.Component {
         <Text>{this.props.navigation.getParam('student_status')}</Text>
         <Text>{this.props.navigation.getParam('employee_type')}</Text>
         <Text>{this.props.navigation.getParam('income_level')}</Text>
-        
+
+        {/* Making use of defined functions */}
+        {this.renderImageBasedOnStatus()}
+
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={() => this.props.navigation.navigate('Home')}>

@@ -31,7 +31,7 @@ export default class ExpenseScreen extends React.Component {
             keyboardType = "number-pad"
           />
         </View>
-        <ActionButton buttonColor="#3498db">
+        <ActionButton buttonColor="#1e90ff">
           <Icon name="md-done-all" style={styles.actionButtonIcon} />
         </ActionButton>
       </View>

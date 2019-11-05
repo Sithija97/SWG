@@ -16,21 +16,21 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={{flex: 1, backgroundColor: '#f3f3f3'}}>
         {/* Rest of the app comes ABOVE the action button component !*/}
-        <ActionButton buttonColor="rgba(231,76,60,1)">
+        <ActionButton buttonColor="#ff4757">
           <ActionButton.Item
-            buttonColor="#9b59b6"
+            buttonColor="#6c5ce7"
             title="Income"
             onPress={() => this.props.navigation.navigate('Income')}>
             <Icon style={styles.actionButtonIcon} />
           </ActionButton.Item>
           <ActionButton.Item
-            buttonColor="#3498db"
+            buttonColor="#1e90ff"
             title="Expenses"
             onPress={() => this.props.navigation.navigate('Expense')}>
             <Icon style={styles.actionButtonIcon}/>
           </ActionButton.Item>
           <ActionButton.Item
-            buttonColor="#1abc9c"
+            buttonColor="#2ed573"
             title="Savings"
             onPress={() => this.props.navigation.navigate('Savings')}>
             <Icon style={styles.actionButtonIcon} />

@@ -14,7 +14,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class EventsScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    drawerIcon: () => (
+      <Image source={require('./bookmark.png')} style={styles.image} />
+    ),
   };
   render() {
     return (
@@ -31,7 +33,7 @@ export default class EventsScreen extends React.Component {
             keyboardType = "number-pad"
           />
         </View>
-        <ActionButton buttonColor="#9b59b6">
+        <ActionButton buttonColor="#ffa502">
           <Icon name="md-done-all" style={styles.actionButtonIcon} />
         </ActionButton>
       </View>
@@ -57,4 +59,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 
+  image: {
+    width: 30,
+    height: 30,
+  },
 });

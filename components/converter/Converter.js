@@ -14,17 +14,41 @@ import RNPickerSelect from 'react-native-picker-select';
 // import axios from 'axios';
 
 export default class ConverterScreen extends React.Component {
-  convert(){
-   var x = this.curinput;
-  //  this.setState({result:x})
-  //  var result = x * state.Currency;
-  //  this.setState({result:value});
-  var temp = this.state.Currency;
-  this.setState({result: temp});
+  getdata = async () => {
+    //variables
+    var inputvalue = this.state.text;
+    var Currency = this.state.Currency;
+    var lkr2inr = inputvalue * 0.38;
+    if (Currency === 'INR') {
+      // console.warn("you have input indian rupees");
 
+      this.setState({result: lkr2inr});
+    } else {
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = e => {
+        if (request.readyState !== 4) {
+          return;
+        }
 
-  }
-  
+        if (request.status === 200) {
+          // console.warn('success', request.responseText);
+          var res = JSON.parse(request.responseText);
+          var ratio = res.rates[this.state.Currency];
+          var t = ratio * lkr2inr;
+          this.setState({result: t});
+
+          // console.warn(result);
+        } else {
+          console.error('error');
+        }
+      };
+      var x = 'http://api.openrates.io/latest?base=INR&symbols=';
+      var y = this.state.Currency;
+      var sentad = x.concat(y);
+      request.open('GET', sentad);
+      request.send();
+    }
+  };
   static navigationOptions = {
     drawerIcon: () => (
       <Image source={require('./git-compare.png')} style={styles.image} />
@@ -33,39 +57,46 @@ export default class ConverterScreen extends React.Component {
   constructor() {
     super();
     this.state = {
+      text: '',
       Currency: '',
-      result : ''
-     
+      result: '',
+      temp2: '',
     };
   }
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <View style={styles.SectionStyle}>
-          <TextInput id="curinput"
+          <TextInput
             //style={{flex: 1}}
-            placeholder="Enter Currency"
+            placeholder="Enter Currency in LKR"
             underlineColorAndroid="transparent"
+            keyboardType="number-pad"
+            onChangeText={text => this.setState({text})}
+            value={this.state.text}
           />
         </View>
 
-        
         <RNPickerSelect
           onValueChange={value => this.setState({Currency: value})}
           items={[
-            {label: 'US Dollar', value: '0.45'},
-            {label: 'LKR', value: '0.55'},
-            {label: 'Ind Rupee', value: '0.65'},
+            {label: 'US Dollar', value: 'USD'},
+            {label: 'Canadian dolor', value: 'CAD'},
+            {label: 'Ind Rupee', value: 'INR'},
+            {label: 'New Zealand Dolor', value: 'NZD'},
           ]}
         />
 
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => this.convert()}>
+          onPress={() => this.getdata()}>
           <Text style={styles.ButtonText}>Convert</Text>
         </TouchableOpacity>
 
-        <View style={{backgroundColor:'#f1f2f6'}}>
+        {/* <View style={{backgroundColor:'#f1f2f6'}}>
+          <Text>{this.state.result}</Text>
+        </View> */}
+        <View style={{backgroundColor: '#f1f2f6'}}>
           <Text>{this.state.result}</Text>
         </View>
       </View>

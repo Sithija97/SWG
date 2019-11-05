@@ -31,7 +31,7 @@ export default class SavingsScreen extends React.Component {
             keyboardType = "number-pad"
           />
         </View>
-        <ActionButton buttonColor="#1abc9c">
+        <ActionButton buttonColor="#2ed573">
           <Icon name="md-done-all" style={styles.actionButtonIcon} />
         </ActionButton>
       </View>

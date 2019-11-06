@@ -49,7 +49,7 @@ import axios from 'axios'
 
 export default class App extends React.Component {
   render() {
-
+    console.disableYellowBox = true;
 
     // axios.get('/test/test').then(x=> {
     //   console.log("Fucking ==============");

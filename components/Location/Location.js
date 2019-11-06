@@ -9,52 +9,16 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import Geocoder from 'react-native-geocoding';
+
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 import { Marker } from 'react-native-maps';  
-import Geolocation from '@react-native-community/geolocation';
-
-Geocoder.init('AIzaSyDfp50rT_iIa365h388F4TjLEWBS39S2kM');
 
 export default class LocationScreen extends React.Component {
-  constructor(props){
-    super(props);
-    this.state={
-      location:{
-        latitude:null,
-        latitude:null
-      }
-    }
-  }
   static navigationOptions = {
     drawerIcon: () => (
       <Image source={require('./location.png')} style={styles.image} />
     ),
   };
-
-  componentDidMount(){
-    console.log("Map")
-    let address='';
-    let latitude=0;
-    let longitude=0;
-    Geolocation.getCurrentPosition(
-      position=> {
-        latitude=position.coords.latitude;
-        longitude=position.coords.longitude;
-        console.log("position=>");
-        console.log(position);
-        Geocoder.from(position.coords.latitude, position.coords.longitude)
-        .then(json => {
-          //console.log(json)
-          address=json.results[0].formatted_address;
-          this.setState(location.latitude=position.coords.latitude,location.longitude=position.coords.longitude);
-        }).catch(error => console.log(error));
-      },
-      error=>{console.log(error)},
-      { enableHighAccuracy: true }
-      //{enableHighAccuracy: true}
-    );
-  }
   render() {
     return(
       <View style={styles.MainContainer}>  
@@ -70,16 +34,12 @@ export default class LocationScreen extends React.Component {
             latitudeDelta: 0.015,  
             longitudeDelta: 0.0121,  
           }}>  
-
-        <Marker
-              draggable
-              coordinate={{
-                latitude:  this.state.location.latitude, 
-                longitude: this.state.location.longitude,
-              }}
-            />
   
-          
+          <Marker  
+            coordinate={{ latitude: 28.579660, longitude: 77.321110 }}  
+            title={"JavaTpoint"}  
+            description={"Java Training Institute"}  
+          />  
         </MapView>  
           
       </View>
@@ -119,15 +79,3 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
 });
-
-/*
-    <MapView
-          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-          style={styles.map}
-          region={{
-            latitude: 6.8511,
-            longitude: 79.9212,
-            latitudeDelta: 0.015,
-            longitudeDelta: 0.0121,
-          }}></MapView>
-*/

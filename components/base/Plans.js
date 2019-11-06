@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity,Image} from 'react-native';
 
 export default class PlansScreen extends React.Component {
   static navigationOptions = {

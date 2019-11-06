@@ -51,6 +51,7 @@ export default class LoginScreen extends React.Component {
             <TextInput
               style={{flex: 1}}
               placeholder="Enter Your Password here"
+              secureTextEntry={true}
               underlineColorAndroid="transparent"
             />
           </View>

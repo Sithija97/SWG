@@ -13,11 +13,26 @@ import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class EventsScreen extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      events:'',
+      newEvent:''
+    };
+  }
+
+  componentDidMount(){
+
+  }
+
   static navigationOptions = {
     drawerIcon: () => (
       <Image source={require('./bookmark.png')} style={styles.image} />
     ),
   };
+
+
   render() {
     return (
       <View style={{flex: 1}}>
@@ -30,11 +45,12 @@ export default class EventsScreen extends React.Component {
             style={{flex: 1}}
             placeholder="Enter Value"
             underlineColorAndroid="transparent"
+            onChangeText={(newEvent) =>{this.setState({newEvent})}}
             keyboardType = "number-pad"
           />
         </View>
         <ActionButton buttonColor="#ffa502">
-          <Icon name="md-done-all" style={styles.actionButtonIcon} />
+          <Icon name="md-done-all" style={styles.actionButtonIcon} onPress={this.addEvent} />
         </ActionButton>
       </View>
     );

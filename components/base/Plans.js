@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity,Image} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity, Image} from 'react-native';
 
 export default class PlansScreen extends React.Component {
   static navigationOptions = {
@@ -7,26 +7,56 @@ export default class PlansScreen extends React.Component {
   };
   //This function returns appropriate URL based on passed status
   renderImageBasedOnStatus = () => {
+    console.log('+++' + this.props.navigation.getParam('status') + '+++');
+    // if(this.props.navigation.getParam('status') == 'student'){
+    //   return (
+    //     <Image
+    //       style={{width: 500, height: 250}}
+    //       source={require('./18-gov.png')}
+    //     />
+    //   );
+    // }else{
+    //   return (
+    //     <Image
+    //       style={{width: 500, height: 250}}
+    //       source={require('./em.png')}
+    //     />
+    //   );
+    // }
     switch (this.props.navigation.getParam('status')) {
       case 'student':
-        return (
-          <Image
-            style={{width: 50, height: 50}}
-            //source={require('./icon2.png')}
-          />
-        );
+        console.log('stu');
+        switch(this.props.navigation.getParam('student_status')){
+          case 'university student - private':
+              return (
+                <Image
+                  style={{width: 500, height: 250}}
+                  source={require('./18+p.png')}
+                />
+              );
+            case 'university student - government':
+                return (
+                  <Image
+                    style={{width: 500, height: 250}}
+                    source={require('./18+G.png')}
+                  />
+                );
+        }
+        
       case 'employee':
+        console.log('emp');
         return (
           <Image
-            style={{width: 50, height: 50}}
-            //source={require('./psswrd.jpg')}
+            style={{width: 500, height: 250}}
+            source={require('./em.png')}
           />
         );
       case 'senior_citizen':
+        console.log('cit');
         return (
           <Image
-            style={{width: 50, height: 50}}
-            //source={require('./Home.jpg')}
+            style={{width: 500, height: 250}}
+            source={require('./senict.png')}
           />
         );
     }
@@ -37,9 +67,9 @@ export default class PlansScreen extends React.Component {
         <Text style={{fontWeight: 'bold', marginTop: 20}}>Plans</Text>
 
         <Text>{this.props.navigation.getParam('status')}</Text>
-        <Text>{this.props.navigation.getParam('student_status')}</Text>
+        {/* <Text>{this.props.navigation.getParam('student_status')}</Text>
         <Text>{this.props.navigation.getParam('employee_type')}</Text>
-        <Text>{this.props.navigation.getParam('income_level')}</Text>
+        <Text>{this.props.navigation.getParam('income_level')}</Text> */}
 
         {/* Making use of defined functions */}
         {this.renderImageBasedOnStatus()}

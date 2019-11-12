@@ -9,15 +9,17 @@ import {
   StyleSheet,
   Image,
   Alert,
+  AsyncStorage
 } from 'react-native';
 
 export default class WelcomeScreen extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isVisible: true,
     };
   }
+
   Hide_Splash_Screen = () => {
     this.setState({
       isVisible: false,
@@ -25,11 +27,18 @@ export default class WelcomeScreen extends React.Component {
   };
 
   componentDidMount() {
+    AsyncStorage.getItem('@app:session').then(token => {
+      console.log(token);
+      if(token !== null){
+        this.props.navigation.navigate('Home');
+      }
+    });
     var that = this;
     setTimeout(function() {
       that.Hide_Splash_Screen();
     }, 5000);
   }
+
   static navigationOptions = {
     header: null,
   };

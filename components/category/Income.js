@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   ImageBackground,
+  AsyncStorage
 } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
@@ -19,11 +20,49 @@ export default class IncomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [{id: 1, name: 'Awards'}, {id: 2, name: 'Gifts'},{id: 3, name: 'Interest Money'}, {id: 4, name: 'Salary'},{id: 5, name: 'Selling'}, {id: 6, name: 'Other'}],
+      data: [
+        {id: 1, name: 'Awards'},
+        {id: 2, name: 'Gifts'},
+        {id: 3, name: 'Interest Money'},
+        {id: 4, name: 'Salary'},
+        {id: 5, name: 'Selling'},
+        {id: 6, name: 'Other'},
+      ],
+      value: 0,
+      category: '',
     };
   }
   static navigationOptions = {
     header: null,
+  };
+
+  addIncome = () => {
+    var {value, category} = this.state;
+
+    console.log('income');
+    console.log(value);
+    console.log(category);
+
+    AsyncStorage.getItem('@app:session').then(token => {
+      fetch('http://192.168.1.151:8080/api/v1/money/income', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json', 
+        'Alpha-Auth-Token' : token
+      },
+      body: JSON.stringify({
+        // data pass to server
+        date: Date.now(),
+        income: value,
+        income_category: category,
+      }),
+    }).then(val => {
+      console.log(val);
+    });
+    });
+
+    
   };
 
   // componentDidMount(){
@@ -62,24 +101,34 @@ export default class IncomeScreen extends React.Component {
 
          <Text>{this.state.test}</Text>
         */}
-
-          
         </View>
         <ModalSelector
-            data={this.state.data}
-            keyExtractor={item => item.id}
-            labelExtractor={item => item.name}
-          />
+          data={this.state.data}
+          keyExtractor={item => item.id}
+          labelExtractor={item => item.name}
+          onChange={option => {
+            this.setState({category: option.name});
+          }}
+        />
         <View style={styles.SectionStyle}>
-        
           <TextInput
             placeholder="Enter Value"
             underlineColorAndroid="transparent"
             keyboardType="number-pad"
+            onChangeText={value => {
+              this.setState({value});
+            }}
           />
         </View>
+        <TouchableOpacity onPress={this.addIncome}>
+          <Text>Add income</Text>
+        </TouchableOpacity>
         <ActionButton buttonColor="#6c5ce7">
-          <Icon name="md-done-all" style={styles.actionButtonIcon} />
+          <Icon
+            name="md-done-all"
+            style={styles.actionButtonIcon}
+            onPress={this.addIncome}
+          />
         </ActionButton>
       </ImageBackground>
     );
@@ -104,7 +153,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#fff',
     borderWidth: 5,
-    borderColor:"#6c5ce7",
+    borderColor: '#6c5ce7',
     height: '10%',
     width: '80%',
     borderRadius: 5,

@@ -50,9 +50,9 @@ export default class UserInfoScreen extends React.Component {
             <RNPickerSelect
               onValueChange={value => this.setState({status: value})}
               items={[
-                {label: 'Student', value: 'student '},
+                {label: 'Student', value: 'student'},
                 {label: 'Employee', value: 'employee'},
-                {label: 'Senior Citizen', value: 'senior citizen'},
+                {label: 'Senior Citizen', value: 'senior_citizen'},
               ]}
             />
           </View>

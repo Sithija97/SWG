@@ -31,6 +31,34 @@ export default class ExpenseScreen extends React.Component {
   //     })
   // }
 
+  addSaving = () => {
+    var {value, category} = this.state;
+
+    console.log('income');
+    console.log(value);
+    console.log(category);
+
+    AsyncStorage.getItem('@app:session').then(token => {
+      fetch('http://192.168.1.151:8080/api/v1/money/saving', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json', 
+        'Alpha-Auth-Token' : token
+      },
+      body: JSON.stringify({
+        // data pass to server
+        date: Date.now(),
+        income: value
+      }),
+    }).then(val => {
+      console.log(val);
+    });
+    });
+
+    
+  };
+
   render() {
     return (
       <ImageBackground
@@ -41,11 +69,21 @@ export default class ExpenseScreen extends React.Component {
               placeholder="Enter Value"
               underlineColorAndroid="transparent"
               keyboardType="number-pad"
+              onChangeText={value => {
+                this.setState({value});
+              }}
             />
           </View>
 
+          <TouchableOpacity onPress={this.addIncome}>
+          <Text>Add saving</Text>
+        </TouchableOpacity>
         <ActionButton buttonColor="#6c5ce7">
-          <Icon name="md-done-all" style={styles.actionButtonIcon} />
+          <Icon
+            name="md-done-all"
+            style={styles.actionButtonIcon}
+            onPress={this.addSaving}
+          />
         </ActionButton>
       </ImageBackground>
     );

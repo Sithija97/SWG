@@ -37,6 +37,35 @@ export default class ExpenseScreen extends React.Component {
     header: null,
   };
 
+  addExpense = () => {
+    var {value, category} = this.state;
+
+    console.log('income');
+    console.log(value);
+    console.log(category);
+
+    AsyncStorage.getItem('@app:session').then(token => {
+      fetch('http://192.168.1.151:8080/api/v1/money/expense', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json', 
+        'Alpha-Auth-Token' : token
+      },
+      body: JSON.stringify({
+        // data pass to server
+        date: Date.now(),
+        income: value,
+        income_category: category,
+      }),
+    }).then(val => {
+      console.log(val);
+    });
+    });
+
+    
+  };
+
   // componentDidMount(){
   //     axios.get('http://10.10.24.131:8080/api/v1/test/test')
   //     .then(response=>{
@@ -58,16 +87,29 @@ export default class ExpenseScreen extends React.Component {
           data={this.state.data}
           keyExtractor={item => item.id}
           labelExtractor={item => item.name}
+          onChange={option => {
+            this.setState({category: option.name});
+          }}
         />
         <View style={styles.SectionStyle}>
           <TextInput
             placeholder="Enter Value"
             underlineColorAndroid="transparent"
             keyboardType="number-pad"
+            onChangeText={value => {
+              this.setState({value});
+            }}
           />
         </View>
+        <TouchableOpacity onPress={this.addIncome}>
+          <Text>Add expense</Text>
+        </TouchableOpacity>
         <ActionButton buttonColor="#6c5ce7">
-          <Icon name="md-done-all" style={styles.actionButtonIcon} />
+          <Icon
+            name="md-done-all"
+            style={styles.actionButtonIcon}
+            onPress={this.addExpense}
+          />
         </ActionButton>
       </ImageBackground>
     );

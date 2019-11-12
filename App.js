@@ -57,7 +57,7 @@ export default class App extends React.Component {
     // }).catch();
 
     // console.log("======================================================");
-
+    axios.defaults.baseURL = 'http://localhost:8080/api/v1';
     return (
       <AppContainr/>
     );

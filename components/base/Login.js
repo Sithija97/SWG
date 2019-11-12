@@ -7,13 +7,84 @@ import {
   TouchableOpacity,
   Text,
   ImageBackground,
+  Alert,
+  AsyncStorage
 } from 'react-native';
 import {SocialIcon} from 'react-native-elements';
 
+import Axios from 'axios';
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  constructor(props){
+    super(props);
+    this.state = {
+      username:'',
+      password:''
+    };
+  }
+
+  login = () =>{
+    console.log('loggin in')
+    var {username,password} = this.state
+
+    if(username === '' || password === ''){
+      Alert.alert('Field Empty');
+      return;
+    }
+
+    fetch("http://192.168.1.151:8080/api/v1/authentication/auth",{
+      method:'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify({
+        // data pass to server
+        email:username,
+        username:username,
+        password:password
+      })
+    })
+    .then((response) => response.json())
+    .then((responseJson) =>{
+      console.log(responseJson.token);
+      AsyncStorage.setItem('@app:session', responseJson.token);
+      this.props.navigation.navigate('Home');
+      // console.log(responseJson);
+      // if(responseJson === 'ok'){
+      //   this.props.navigation.navigate('Home');
+      // }else if(responseJson === 'not'){
+      //   Alert.alert('User name or Password Error');
+      //   this.setState({username:'',password:''});
+      // }
+    })
+  }
+
+  // Login = async() => {
+  //   Axios.post('/authentication/auth', {
+  //     username:this.state.username,
+  //     password:this.state.password
+  //   })
+
+  //   .then(res => {
+  //     Alert.alert(this.state.username + ' ' + this.state.password);
+  //     if( res.status === 200){
+  //       Alert.alert('Logged in succeddfully');
+  //       this.props.navigation.navigate('Home');
+  //     }else{
+  //       Alert.alert('Invalid credintials');
+  //     }
+  //   })
+
+  //   .catch(err => {
+  //     Alert.alert(err);
+  //     console.log(err);
+  //   });
+  // };
+
   render() {
     return (
       <ImageBackground
@@ -35,6 +106,8 @@ export default class LoginScreen extends React.Component {
               style={{flex: 1}}
               placeholder="Enter Your Email Here"
               underlineColorAndroid="transparent"
+              onChangeText={(username) =>{this.setState({username})}}
+              value={this.state.username}
             />
           </View>
           <View style={styles.SectionStyle}>
@@ -53,12 +126,14 @@ export default class LoginScreen extends React.Component {
               placeholder="Enter Your Password here"
               secureTextEntry={true}
               underlineColorAndroid="transparent"
+              onChangeText={(password) =>{this.setState({password})}}
+              value={this.state.password}
             />
           </View>
           <TouchableOpacity
             style={styles.buttonContainer}
-            onPress={() => this.props.navigation.navigate('Home')}>
-            <Text style={styles.ButtonText}>Login</Text>
+            onPress={this.login}>
+            <Text style={styles.ButtonText} >Login</Text>
           </TouchableOpacity>
 
         </View>
